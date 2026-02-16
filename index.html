@@ -1,0 +1,422 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Portafolio Minecraft — Ultra Pro</title>
+<meta name="description" content="Portafolio estilo Minecraft profesional ultra avanzado." />
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* ================= ROOT ================= */
+:root{
+  --bg-1:#071019;
+  --bg-2:#0e1b14;
+  --accent-a:#33ff66;
+  --accent-b:#1faa4a;
+  --muted:#9fb8a8;
+  --text:#e5f7ea;
+  --danger:#ff3b3b;
+  --shadow-pixel:5px 5px 0 rgba(0,0,0,0.85);
+  --radius:10px;
+  --max-width:1200px;
+  --transition:0.3s ease;
+}
+
+/* ================= GLOBAL ================= */
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;scroll-behavior:smooth}
+body{
+  font-family:'Inter',system-ui;
+  color:var(--text);
+  background:linear-gradient(135deg,var(--bg-1),var(--bg-2));
+  overflow-x:hidden;
+  background-size:400% 400%;
+  animation:bgShift 18s linear infinite;
+}
+@keyframes bgShift{
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
+
+/* ================= ENTRY ================= */
+#entryOverlay{
+  position:fixed;inset:0;z-index:999;
+  background:#000;
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;
+}
+#entryOverlay h2{
+  font-family:'Press Start 2P';
+  color:white;
+  animation:pulse 1.5s infinite;
+}
+@keyframes pulse{
+  0%{opacity:1}
+  50%{opacity:.6}
+  100%{opacity:1}
+}
+
+/* ================= HEADER ================= */
+header{
+  position:fixed;
+  top:0;
+  width:100%;
+  z-index:100;
+  padding:1rem;
+  backdrop-filter:blur(10px);
+}
+.nav-wrap{
+  width:100%;
+  max-width:var(--max-width);
+  margin:auto;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.logo{
+  font-family:'Press Start 2P';
+  color:var(--accent-a);
+}
+.btn{
+  background:#111;
+  border:1px solid #333;
+  color:white;
+  padding:.4rem .6rem;
+  border-radius:6px;
+  cursor:pointer;
+  transition:var(--transition);
+}
+.btn:hover{
+  background:var(--accent-b);
+  transform:scale(1.05);
+}
+
+/* ================= MAIN ================= */
+main{
+  max-width:var(--max-width);
+  margin:6rem auto;
+  padding:2rem 1rem;
+}
+section{
+  margin-bottom:3rem;
+  opacity:0;
+  transform:translateY(30px);
+  transition:.6s;
+}
+section.visible{
+  opacity:1;
+  transform:translateY(0);
+}
+.panel{
+  background:rgba(20,30,25,.6);
+  padding:1.5rem;
+  border-radius:var(--radius);
+  box-shadow:var(--shadow-pixel);
+  backdrop-filter:blur(8px);
+}
+
+/* ================= HERO ================= */
+.hero{text-align:center}
+.hero h1{
+  font-family:'Press Start 2P';
+  color:var(--accent-a);
+  margin-bottom:1rem;
+}
+
+/* ================= PROFILE ================= */
+.profile-card{
+  display:flex;
+  gap:2rem;
+  flex-wrap:wrap;
+  align-items:center;
+}
+.profile-skin{
+  width:180px;
+  animation:floatSkin 4s ease-in-out infinite;
+  image-rendering:pixelated;
+}
+@keyframes floatSkin{
+  0%{transform:rotateY(-10deg) translateY(0)}
+  50%{transform:rotateY(10deg) translateY(-12px)}
+  100%{transform:rotateY(-10deg) translateY(0)}
+}
+.status{
+  width:12px;height:12px;border-radius:50%;
+  background:#00ff66;display:inline-block;
+  animation:blink 1.2s infinite;
+}
+@keyframes blink{
+  0%{opacity:1}
+  50%{opacity:.4}
+  100%{opacity:1}
+}
+.xp-bar{
+  margin-top:10px;
+  height:14px;
+  background:#222;
+  border-radius:8px;
+  overflow:hidden;
+}
+.xp-fill{
+  height:100%;
+  width:0%;
+  background:linear-gradient(90deg,#00ff66,#1faa4a);
+  animation:xpLoad 3s forwards;
+}
+@keyframes xpLoad{to{width:92%}}
+
+/* ================= SKILLS ================= */
+.skills-grid,.projects-grid{
+  display:grid;
+  gap:1rem;
+}
+.skills-grid{
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+}
+.projects-grid{
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+}
+.skill-box{
+  transition:var(--transition);
+}
+.skill-box:hover{
+  transform:translateY(-5px);
+}
+
+/* ================= PROJECTS ================= */
+.project-card img{
+  width:100%;
+  border-radius:8px;
+  margin-bottom:.6rem;
+  transition:.3s;
+}
+.project-card:hover img{
+  transform:scale(1.08);
+}
+.project-card{
+  cursor:pointer;
+  transition:.3s;
+}
+.project-card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 15px 30px rgba(0,0,0,.5);
+}
+
+/* ================= MODAL ================= */
+#projectModal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.8);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:200;
+}
+#projectModal .modal-content{
+  background:#111;
+  padding:2rem;
+  border-radius:12px;
+  max-width:600px;
+  width:90%;
+}
+
+/* ================= FOOTER ================= */
+footer{
+  text-align:center;
+  padding:2rem;
+  color:var(--muted);
+}
+
+/* ================= CANVAS ================= */
+#bgCanvas{
+  position:fixed;
+  inset:0;
+  z-index:-1;
+}
+</style>
+</head>
+
+<body>
+
+<div id="entryOverlay">
+  <h2>CLICK PARA ENTRAR</h2>
+</div>
+
+<canvas id="bgCanvas"></canvas>
+
+<header>
+  <div class="nav-wrap">
+    <div class="logo">MC-PORTFOLIO</div>
+    <div>
+      <button class="btn" id="themeBtn">🌙</button>
+      <button class="btn" id="clockBtn">🕒</button>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<section class="hero panel">
+  <h1>JUAN DEV</h1>
+  <p>Desarrollador creativo con estética pixel y pasión por el código.</p>
+  <p id="liveClock"></p>
+</section>
+
+<section class="panel">
+  <h2>Perfil</h2>
+  <div class="profile-card">
+    <img class="profile-skin" src="https://mc-heads.net/body/Juanlowww/200">
+    <div>
+      <h3>Juanlowww <span class="status"></span></h3>
+      <p>Especialista en BoxPvP y desarrollo avanzado de servidores.</p>
+      <div class="xp-bar"><div class="xp-fill"></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="panel">
+  <h2>Skills</h2>
+  <div class="skills-grid" id="skillsContainer"></div>
+</section>
+
+<section class="panel">
+  <h2>Proyectos</h2>
+  <div class="projects-grid" id="projectsContainer"></div>
+</section>
+
+</main>
+
+<footer>
+  © 2026 Juanlowww - Todos los derechos reservados
+</footer>
+
+<div id="projectModal">
+  <div class="modal-content" id="modalContent"></div>
+</div>
+
+<script>
+
+/* ================= CLOCK ================= */
+function updateClock(){
+  const now=new Date();
+  document.getElementById("liveClock").innerText=
+    now.toLocaleTimeString();
+}
+setInterval(updateClock,1000);
+updateClock();
+
+/* ================= SKILLS ================= */
+const skillsData=[
+{name:"JavaScript",desc:"Frontend dinámico"},
+{name:"HTML5",desc:"Estructura semántica"},
+{name:"CSS3",desc:"Animaciones pro"},
+{name:"Node.js",desc:"Backend avanzado"},
+{name:"MongoDB",desc:"Bases de datos"},
+{name:"React",desc:"Interfaces modernas"},
+{name:"UI/UX",desc:"Experiencia visual"}
+];
+skillsData.forEach(s=>{
+const d=document.createElement("div");
+d.className="panel skill-box";
+d.innerHTML=`<h3>${s.name}</h3><p>${s.desc}</p>`;
+skillsContainer.appendChild(d);
+});
+
+/* ================= PROJECTS ================= */
+const projectsData=[
+{
+title:"BoxPvP Clásico",
+desc:"Servidor competitivo estilo antiguo.",
+img:"https://images.unsplash.com/photo-1605902711622-cfb43c4437b1"
+},
+{
+title:"Dashboard Admin",
+desc:"Panel administrativo Minecraft.",
+img:"https://images.unsplash.com/photo-1611078489935-0cb964de46d6"
+},
+{
+title:"Sistema Rankup",
+desc:"Sistema avanzado de progresión.",
+img:"https://images.unsplash.com/photo-1581091215367-59ab6b1f1d6e"
+}
+];
+
+projectsData.forEach(p=>{
+const d=document.createElement("div");
+d.className="project-card panel";
+d.innerHTML=`
+<img src="${p.img}">
+<h3>${p.title}</h3>
+<p>${p.desc}</p>`;
+d.onclick=()=>{
+projectModal.style.display="flex";
+modalContent.innerHTML=`<h2>${p.title}</h2><p>${p.desc}</p>`;
+};
+projectsContainer.appendChild(d);
+});
+projectModal.onclick=()=>projectModal.style.display="none";
+
+/* ================= OBSERVER ================= */
+const observer=new IntersectionObserver(e=>{
+e.forEach(x=>{
+if(x.isIntersecting)x.target.classList.add("visible");
+});
+});
+document.querySelectorAll("section").forEach(s=>observer.observe(s));
+
+/* ================= CANVAS BACKGROUND ================= */
+const canvas=document.getElementById("bgCanvas");
+const ctx=canvas.getContext("2d");
+function resize(){
+  canvas.width=innerWidth;
+  canvas.height=innerHeight;
+}
+resize();
+addEventListener("resize",resize);
+
+let particles=[];
+for(let i=0;i<80;i++){
+particles.push({
+x:Math.random()*canvas.width,
+y:Math.random()*canvas.height,
+size:2+Math.random()*4,
+speed:0.5+Math.random(),
+});
+}
+
+function animate(){
+ctx.clearRect(0,0,canvas.width,canvas.height);
+particles.forEach(p=>{
+ctx.fillStyle="rgba(0,255,100,.2)";
+ctx.fillRect(p.x,p.y,p.size,p.size);
+p.y+=p.speed;
+if(p.y>canvas.height)p.y=0;
+});
+requestAnimationFrame(animate);
+}
+animate();
+
+/* ================= ENTRY ================= */
+entryOverlay.onclick=()=>{
+entryOverlay.style.display="none";
+};
+
+/* ================= THEME ================= */
+let dark=true;
+themeBtn.onclick=()=>{
+dark=!dark;
+if(!dark){
+document.body.style.background="#e5f7ea";
+document.body.style.color="#111";
+}else{
+document.body.style.background="";
+document.body.style.color="";
+}
+};
+
+</script>
+
+</body>
+</html>
