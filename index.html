@@ -10,13 +10,13 @@
 <style>
 /* ================= ROOT ================= */
 :root{
-  --bg-1:#071019;
-  --bg-2:#0e1b14;
-  --accent-a:#33ff66;
-  --accent-b:#1faa4a;
+  --bg-1:#111111;
+  --bg-2:#000000;
+  --accent-a:#ffb4ddd0;
+  --accent-b:#e2668b;
   --muted:#9fb8a8;
   --text:#e5f7ea;
-  --danger:#ff3b3b;
+  --danger:#ff3b65;
   --shadow-pixel:5px 5px 0 rgba(0,0,0,0.85);
   --radius:10px;
   --max-width:1200px;
@@ -110,7 +110,7 @@ section.visible{
   transform:translateY(0);
 }
 .panel{
-  background:rgba(20,30,25,.6);
+  background:#11111199;
   padding:1.5rem;
   border-radius:var(--radius);
   box-shadow:var(--shadow-pixel);
@@ -144,7 +144,7 @@ section.visible{
 }
 .status{
   width:12px;height:12px;border-radius:50%;
-  background:#00ff66;display:inline-block;
+  background:#ff0095;display:inline-block;
   animation:blink 1.2s infinite;
 }
 @keyframes blink{
@@ -162,7 +162,7 @@ section.visible{
 .xp-fill{
   height:100%;
   width:0%;
-  background:linear-gradient(90deg,#00ff66,#1faa4a);
+  background:linear-gradient(90deg,#ff0055,#aa1f65);
   animation:xpLoad 3s forwards;
 }
 @keyframes xpLoad{to{width:92%}}
@@ -248,7 +248,7 @@ footer{
 
 <header>
   <div class="nav-wrap">
-    <div class="logo">MC-PORTFOLIO</div>
+    <div class="logo">PORTAFOLIO DE JUANLOWWW</div>
     <div>
       <button class="btn" id="themeBtn">🌙</button>
       <button class="btn" id="clockBtn">🕒</button>
@@ -259,8 +259,8 @@ footer{
 <main>
 
 <section class="hero panel">
-  <h1>JUAN DEV</h1>
-  <p>Desarrollador creativo con estética pixel y pasión por el código.</p>
+  <h1>Juanlowww Developer</h1>
+  <p>Hey! que tal? soy Juanlowww un apasionado por minecraft y el codigo, en mis tiempos libres me gusta aprender cosas nuevas.</p>
   <p id="liveClock"></p>
 </section>
 
@@ -327,9 +327,9 @@ skillsContainer.appendChild(d);
 /* ================= PROJECTS ================= */
 const projectsData=[
 {
-title:"BoxPvP Clásico",
-desc:"Servidor competitivo estilo antiguo.",
-img:"https://images.unsplash.com/photo-1605902711622-cfb43c4437b1"
+title:"LatinoMC (Cerrado)",
+desc:"El primer servidor que tuve (El mapa es completamente hecho por mi).",
+img:"https://cdn.discordapp.com/attachments/1472259752959672442/1472920120421515465/Captura_de_pantalla_16-2-2026_43818_www.planetminecraft.com.jpeg?ex=69945342&is=699301c2&hm=eb6f30f5a8da19adecb457eba749285b1e8f51b9e65450159692f9388033de42"
 },
 {
 title:"Dashboard Admin",
@@ -389,7 +389,7 @@ speed:0.5+Math.random(),
 function animate(){
 ctx.clearRect(0,0,canvas.width,canvas.height);
 particles.forEach(p=>{
-ctx.fillStyle="rgba(0,255,100,.2)";
+ctx.fillStyle="rgba(235,15,139,.8)";
 ctx.fillRect(p.x,p.y,p.size,p.size);
 p.y+=p.speed;
 if(p.y>canvas.height)p.y=0;
